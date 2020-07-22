@@ -14,7 +14,8 @@ export default class Server {
         const viewsPath = path.join(__dirname, '..', 'app', 'views');
         app.set('views', viewsPath);
 
-        app.use(express.static('./app/public'));
+        const publicPath = path.join(__dirname, '..', 'app', 'public');
+        app.use(express.static(publicPath));
 
         app.use(compression());
         app.use(bodyParser.urlencoded({extended: true}));

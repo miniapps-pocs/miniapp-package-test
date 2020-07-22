@@ -4,4 +4,8 @@ module.exports = function (application) {
         application.app.controllers.jwtAppController.index(req, res);
     });
 
+    application.get('/jwtApp/decrypt', (req, res) => {
+        application.app.controllers.jwtAppController.decrypt(req, res);
+    });
+
 };
