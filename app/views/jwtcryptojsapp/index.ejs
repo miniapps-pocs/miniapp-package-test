@@ -9,6 +9,7 @@
     <script type="text/javascript" src="libs/crypto-js/enc-base64.js"></script>
     <script type="text/javascript" src="libs/crypto-js/hmac.js"></script>
     <script type="text/javascript" src="libs/crypto-js/sha256.js"></script>
+    <script type="text/javascript" src="libs/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="scripts/jwtcryptojsapp/MyStrLib/StrLib.js"></script>
     <script type="text/javascript" src="scripts/jwtcryptojsapp/index.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
@@ -21,7 +22,7 @@
         <a href="https://cryptojs.gitbook.io/docs/" taget="_blank">Crypto-JS Doc</a>
     </p>
 
-    <form name="cryptojsForm">
+    <form id="cryptojsForm" name="cryptojsForm">
         
         <div><b>JWT Header</b></div>
         <textarea name="jwtHead" rows="5" cols="65">{
@@ -47,8 +48,8 @@
         <textarea name="jwtResult" rows="10" cols="65"></textarea>
         <br />
 
-        <input type="button" value="Anexar" onclick="signature()" />
-        <input type="button" value="reiniciar" onclick="clear()" />
+        <input type="button" id="sign" value="Anexar" />
+        <input type="button" id="restart" value="reiniciar" />
 
     </form>
 

@@ -1,12 +1,14 @@
 const TYPE = "Recarga de celular";
 const defaultSecretKey = 'Aa_9876!!';
 
-function signature() {
+$(document).ready(function () {
+
+  function signature() {
     let securityInfo = parseJWT();
     document.cryptojsForm.jwtResult.value = securityInfo;
-}
+  }
 
-function getBase64Encoded(rawStr) {
+  function getBase64Encoded(rawStr) {
     let wordArray = CryptoJS.enc.Utf8.parse(rawStr);
     let base64 = CryptoJS.enc.Base64.stringify(wordArray);
     return base64;
@@ -36,3 +38,14 @@ function getBase64Encoded(rawStr) {
     let jwt = CreateJWT(Header.trim(), Payload.trim(), secret);
     return (jwt);
   }
+
+  $('#sign').click(function() {
+    let securityInfo = parseJWT();
+    document.cryptojsForm.jwtResult.value = securityInfo;
+  });
+
+  $('#restart').click(function() {
+    document.cryptojsForm.reset();
+  });
+
+});
