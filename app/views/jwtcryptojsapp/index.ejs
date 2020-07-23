@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Crypto-JS Test App</title>
+    <meta name='viewport' content='width=device-width, user-scalable=no'>
+    <script type="text/javascript" src="libs/crypto-js/core.js"></script>
+    <script type="text/javascript" src="libs/crypto-js/enc-base64.js"></script>
+    <script type="text/javascript" src="libs/crypto-js/hmac.js"></script>
+    <script type="text/javascript" src="libs/crypto-js/sha256.js"></script>
+    <script type="text/javascript" src="scripts/jwtcryptojsapp/MyStrLib/StrLib.js"></script>
+    <script type="text/javascript" src="scripts/jwtcryptojsapp/index.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/index.css'>
+</head>
+<body>
+    
+    <h1>Teste de lib crtpyo-js</h1>
+    
+    <p>
+        <a href="https://cryptojs.gitbook.io/docs/" taget="_blank">Crypto-JS Doc</a>
+    </p>
+
+    <form name="cryptojsForm">
+        
+        <div><b>JWT Header</b></div>
+        <textarea name="jwtHead" rows="5" cols="65">{
+    "alg": "HS256",
+    "typ": "JWT"
+}</textarea>
+        <br />
+
+        <div><b>Security Info</b></div>
+        <textarea name="jwtPayload" rows="7" cols="65">{
+    "rechageMobileNumber": 990684132,
+    "rechageMobileNumberAreaCode": 12,
+    "rechageServiceCarrier": "<%= provider %>",
+    "rechageType": "<%= TYPE %>"
+}</textarea>
+        <br />
+
+        <div><b>Secret key</b></div>
+        <input name="jwtsecretKey" type="text" value="" placeholder="input secret key" />
+        <br />
+
+        <div><b>JWT Result</b></div>
+        <textarea name="jwtResult" rows="10" cols="65"></textarea>
+        <br />
+
+        <input type="button" value="Anexar" onclick="signature()" />
+        <input type="button" value="reiniciar" onclick="clear()" />
+
+    </form>
+
+    <p>
+        <a href="https://jwt.io" target="_blank">check on jwt.io</a>
+    </p>
+
+</body>
+</html>

@@ -6,5 +6,5 @@ const server = new Server();
 const app = server.prepareApp();
 
 app.listen(port, () => {
-    console.log(`listenen on ${process.env.HOST} ${port}`);
+    console.log(`listening on ${process.env.HOST} ${port}`);
 });

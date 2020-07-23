@@ -1,5 +1,5 @@
-const SECRET = 'ttZs7nn!e$%T';
 const TYPE = "Recarga de celular";
+const defaultSecretKey = 'Aa_9876!!';
 
 function signature() {
     let securityInfo = parseJWT();
@@ -13,7 +13,6 @@ function getBase64Encoded(rawStr) {
   }
 
   function getBase64Decoded(encodedStr) {
-
     let parsedWordArray = CryptoJS.enc.Base64.parse(encodedStr);
     let parsedStr = parsedWordArray.toString(CryptoJS.enc.Utf8);
     return parsedStr;
@@ -24,17 +23,16 @@ function getBase64Encoded(rawStr) {
     var Strlib = new CStrLib();
     let UrlSafe = true;
     let base64Payload = Strlib.toBase64(Payload, UrlSafe);
-
     let signature = CryptoJS.HmacSHA256(base64Header + "." + base64Payload, Secret);
     let base64Sign = CryptoJS.enc.Base64.stringify(signature);
-
     let jwt = base64Header + "." + base64Payload + "." + base64Sign;
     return (jwt);
   }
 
   function parseJWT() {
-    let Header = JSON.stringify({ alg: "HS256", typ: "JWT" });
-    let Payload = JSON.stringify(document.cryptojsForm.jwtPayload.value || {});
-    let jwt = CreateJWT(Header.trim(), Payload.trim(), SECRET);
+    let Header = JSON.stringify(JSON.parse(document.cryptojsForm.jwtHead.value || '{ }'));
+    let Payload = JSON.stringify(JSON.parse(document.cryptojsForm.jwtPayload.value || '{ }'));
+    const secret = document.cryptojsForm.jwtsecretKey.value || defaultSecretKey;
+    let jwt = CreateJWT(Header.trim(), Payload.trim(), secret);
     return (jwt);
   }
