@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Jwt App test encrypt</title>
+    <meta name='viewport' content='width=device-width, user-scalable=no'>
+    <script language="JavaScript" type="text/javascript" src="libs/jsrsasign/jsrsasign-all-min.js"></script>
+    <script lang="JavaScript" type="text/javascript" src="scripts/jwtapp/encrypt.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    
+    <h1>Security info encrypt test</h1>
+
+    <p>
+        <a href="http://kjur.github.io/jsrsasign/api/index.html" target="_blank">KJUR Doc</a>
+    </p>
+
+    <form name="jwtForm">
+
+        <div><b>JWT Header</b></div>
+        <textarea name="jwtHead" rows="5" cols="65">{
+    "alg": "<%= alg %>",
+    "typ": "JWT"
+}</textarea>
+        <br />
+
+        <div><b>JWT Payload</b></div>
+        <textarea name="jwtPayload" rows="7" cols="65">{
+    "sub": "2138748735193088",
+    "name": "Travis Garner",
+    "iat": 1475451753,
+    "id": "36af96b3a6ad4bc18a20aa9cacd47f49"
+}</textarea>
+        <br />
+        
+        <div><b>Secret or PEM Private key</b></div>
+        <textarea name="pemprvkey" rows="31" cols="65">-----BEGIN RSA PRIVATE KEY-----
+<%= privateKey %>
+-----END RSA PRIVATE KEY-----</textarea>
+        <p><strong>cmd private key:</strong> openssl genrsa 2048 </p>
+        <br />
+
+        <div><b>JWT result</b></div>
+        <textarea name="jwtJson" rows="8" cols="65"></textarea>
+        <div><b>JWT json result</b></div>
+        <textarea name="jwtResult" rows="15" cols="65"></textarea>
+
+        <br />
+
+        <input type="button" value="Anexar pela chave privada" onclick="signature()" />
+        <input type="button" value="reiniciar" onclick="clear()" />
+    </form>
+
+    <p>
+        <a href="https://jwt.io" target="_blank">check on jwt.io</a> | 
+        <a href="/jwtApp/decrypt" target="_blank">Decrypt</a>
+    </p>
+
+</body>
+</html>
